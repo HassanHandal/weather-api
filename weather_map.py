@@ -1,5 +1,6 @@
 import tkinter as tk
 import requests
+from api import api_key2
 window = tk.Tk()
 window.title("Weather Status Map")
 window.minsize(width=300,height=300)
@@ -25,7 +26,7 @@ def precipitation_to_percentage(precipitation_mm):
         return 100
 def search_w():
 
-    api_key = "dd7526ab0c88d191421a9664f9d7bf08"
+    api_key = api_key2()
     city = search.get()
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
     response = requests.get(url)
@@ -55,7 +56,7 @@ windspeed = tk.Label(frame,text="Wind Speed : ",padx=10,pady=10,font=25,highligh
 windspeed.grid(column=0,row=5,sticky="ew")
 pressure = tk.Label(frame,text="Pressure : ",padx=10,pady=10,font=25,highlightbackground="black",highlightthickness="2")
 pressure.grid(column=0,row=6,sticky="ew")
-precipitation = tk.Label(frame,text="Precipitation : ",padx=10,pady=10,font=25,highlightbackground="black",highlightthickness="2")
+precipitation = tk.Label(frame,text="Rain propability : ",padx=10,pady=10,font=25,highlightbackground="black",highlightthickness="2")
 precipitation.grid(column=0,row=7,sticky="ew")
 frame_r = tk.Frame(window,relief="raised",width=20)
 frame_r.grid(column=1,row=3,sticky="ew")
